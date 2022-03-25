@@ -48,6 +48,9 @@ namespace MVFSR
         {
             TapBitfield = tapBitfield;
             tapCount = PopCount(tapBitfield);
+
+            if (tapCount % 2 == 0)
+                throw new ArgumentException("need an odd tap weight, 0x" + TapBitfield.ToString("X") + " has weight " + tapCount);
         }
 
         public int CalculateFeedback(int state)
