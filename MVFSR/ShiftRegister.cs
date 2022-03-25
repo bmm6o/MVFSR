@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVFSR
 {
-    internal class ShiftRegister
+    internal sealed class ShiftRegister
     {
         public int State { get; private set; }
 
@@ -30,6 +30,11 @@ namespace MVFSR
         public override string ToString()
         {
             return Convert.ToString(State, 2).PadLeft(Size, '0');
+        }
+
+        public ShiftRegister Clone()
+        {
+            return new ShiftRegister(feedback, State, Size);
         }
     }
 

@@ -8,8 +8,9 @@ namespace MVFSR
 {
     internal class CycleFinder
     {
-        public static int RunUntilCycle(ShiftRegister fast, ShiftRegister slow)
+        public static int RunUntilCycle(ShiftRegister reg)
         {
+            ShiftRegister slow = reg, fast = reg.Clone();
             int counter = 0;
             do
             {

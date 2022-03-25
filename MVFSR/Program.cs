@@ -4,7 +4,8 @@ using System.Runtime.CompilerServices;
 
 [assembly:InternalsVisibleTo("MVFSR.Test")]
 
-for (int registerWidth = 4; registerWidth <= 30; ++registerWidth)
+
+for (int registerWidth = 4; registerWidth <= 16; ++registerWidth)
 {
     int max = 0;
 
@@ -12,17 +13,19 @@ for (int registerWidth = 4; registerWidth <= 30; ++registerWidth)
     {
         var tapWeight = MajorityFeedback.PopCount(taps);
 
-        if (tapWeight % 2 == 0) // need an odd number of taps for majority rule
+        if (tapWeight < 3 || tapWeight % 2 == 0) // need an odd number of taps for majority rule
             continue;
 
-        var fast = new ShiftRegister(new MajorityFeedback(taps), 0, registerWidth);
-        var slow = new ShiftRegister(new MajorityFeedback(taps), 0, registerWidth);
-
-        int length = CycleFinder.RunUntilCycle(fast, slow);
-        if (length > max)
+        for (int startVal = 0; startVal < 1 << registerWidth; startVal++)
         {
-            //Console.WriteLine("taps " + Convert.ToString(taps, 2).PadLeft(registerWidth, '0') + " gives cycle length " + length);
-            max = length;
+            var reg = new ShiftRegister(new MajorityFeedback(taps), startVal, registerWidth);
+
+            int length = CycleFinder.RunUntilCycle(reg);
+            if (length > max)
+            {
+                Console.WriteLine("taps " + taps.ToBinary(registerWidth) + " and startValue " + startVal.ToBinary(registerWidth) + " gives cycle length " + length);
+                max = length;
+            }
         }
     }
     Console.WriteLine($"for width {registerWidth}, max cycle length is {max}");
