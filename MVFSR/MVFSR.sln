@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVFSR", "MVFSR.csproj", "{D6761707-865A-464B-9EB3-1633426CC0F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVFSR.Test", "..\MVFSR.Test\MVFSR.Test.csproj", "{693B3E8C-0994-465E-8DAF-E334C54693D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6761707-865A-464B-9EB3-1633426CC0F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6761707-865A-464B-9EB3-1633426CC0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6761707-865A-464B-9EB3-1633426CC0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6761707-865A-464B-9EB3-1633426CC0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693B3E8C-0994-465E-8DAF-E334C54693D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693B3E8C-0994-465E-8DAF-E334C54693D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693B3E8C-0994-465E-8DAF-E334C54693D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693B3E8C-0994-465E-8DAF-E334C54693D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34D12D12-158A-4870-9748-4AB636963A32}
+	EndGlobalSection
+EndGlobal
