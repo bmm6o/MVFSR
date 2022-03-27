@@ -42,9 +42,23 @@ namespace MVFSR.Test
         [InlineData(0b10001011, 0)]
         public void ItCorrectlyCalculatesMajority(int state, int majority)
         {
-            var feedback = new MajorityFeedback(0b01010101);
+            var feedback = new MajorityFeedback(0b01010111);
 
             Assert.Equal(majority, 1 - feedback.CalculateFeedback(state)); // 1- because feedback is opposite of majority
+        }
+
+        [Theory]
+        [InlineData(8, 0b00000111, 0, new[] { 0b10000000, 0b11000000, 0b11100000 })]
+        [InlineData(4, 0b00001101, 0b1111, new[] { 0b0111, 0b0011, 0b1001, 0b1100 })]
+        public void MvfsrOperatesCorrectly(int size, int taps, int initialValue, int[] nextStates)
+        {
+            var mvfsr = new ShiftRegister(new MajorityFeedback(taps), initialValue, size);
+
+            foreach (var state in nextStates)
+            {
+                mvfsr.Update();
+                Assert.Equal(state, mvfsr.State);
+            }
         }
     }
 
